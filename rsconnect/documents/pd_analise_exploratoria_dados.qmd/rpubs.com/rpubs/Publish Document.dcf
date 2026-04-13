@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1420627/a87302d8b9d447929b33fd0d0707f340
+bundleId: https://api.rpubs.com/api/v1/document/1420627/a87302d8b9d447929b33fd0d0707f340
+url: http://rpubs.com/Alan_Alonso/1420627
+version: 1

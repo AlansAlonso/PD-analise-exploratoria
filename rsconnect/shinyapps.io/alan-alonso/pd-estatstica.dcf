@@ -1,0 +1,10 @@
+name: pd-estatstica
+title:
+username: alan-alonso
+account: alan-alonso
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17115903
+bundleId: 11841168
+url: https://alan-alonso.shinyapps.io/pd-estatstica/
+version: 1
