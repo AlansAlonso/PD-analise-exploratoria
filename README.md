@@ -29,6 +29,7 @@ PD-analise-exploratoria
 ├── pd_analise_exploratoria_dados.html  # Relatório renderizado
 ├── pd_analise_exploratoria_dados_files # Arquivos auxiliares do relatório
 ├── rsconnect/                          # Arquivos de deploy do Shiny
+├── images/                             # Imagens utilizadas no relatório
 ├── .gitignore
 ├── PD-Estatística.Rproj
 └── README.md
