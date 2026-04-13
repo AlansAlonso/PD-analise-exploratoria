@@ -69,6 +69,42 @@ ui <- dashboardPage(
           "Escolaridade" = "Schooling"
         ),
         selected = "Schooling"
+      ),
+      
+      selectInput(
+        inputId = "cor",
+        label = "Escolha a cor dos pontos:",
+        choices = c(
+          "Azul" = "blue",
+          "Vermelho" = "red",
+          "Verde" = "green",
+          "Preto" = "black"
+        ),
+        selected = "blue"
+      ),
+      
+      numericInput(
+        inputId = "xmin",
+        label = "Limite inferior do eixo X:",
+        value = floor(min(df_imputed$Schooling, na.rm = TRUE))
+      ),
+      
+      numericInput(
+        inputId = "xmax",
+        label = "Limite superior do eixo X:",
+        value = ceiling(max(df_imputed$Schooling, na.rm = TRUE))
+      ),
+      
+      numericInput(
+        inputId = "ymin",
+        label = "Limite inferior do eixo Y:",
+        value = floor(min(df_imputed$Life.expectancy, na.rm = TRUE))
+      ),
+      
+      numericInput(
+        inputId = "ymax",
+        label = "Limite superior do eixo Y:",
+        value = ceiling(max(df_imputed$Life.expectancy, na.rm = TRUE))
       )
     )
   ),
@@ -104,7 +140,30 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
   
   dados_filtrados <- reactive({
-    df_imputed
+    dados <- df_imputed
+    
+    dados <- dados %>%
+      filter(
+        .data[[input$var_x]] >= input$xmin,
+        .data[[input$var_x]] <= input$xmax,
+        Life.expectancy >= input$ymin,
+        Life.expectancy <= input$ymax
+      )
+    
+    dados
+  })
+  
+  # Atualizar automaticamente limites do eixo X quando a variável mudar
+  observeEvent(input$var_x, {
+    updateNumericInput(
+      session, "xmin",
+      value = floor(min(df_imputed[[input$var_x]], na.rm = TRUE))
+    )
+    
+    updateNumericInput(
+      session, "xmax",
+      value = ceiling(max(df_imputed[[input$var_x]], na.rm = TRUE))
+    )
   })
   
   # Scatter plot
@@ -115,8 +174,12 @@ server <- function(input, output, session) {
       x = .data[[input$var_x]],
       y = Life.expectancy
     )) +
-      geom_point(alpha = 0.7) +
-      geom_smooth(method = "lm", se = FALSE) +
+      geom_point(alpha = 0.7, color = input$cor) +
+      geom_smooth(method = "lm", se = FALSE, color = "black") +
+      coord_cartesian(
+        xlim = c(input$xmin, input$xmax),
+        ylim = c(input$ymin, input$ymax)
+      ) +
       labs(
         title = "Relação entre Variável Escolhida e Expectativa de Vida",
         x = input$var_x,
@@ -139,7 +202,6 @@ server <- function(input, output, session) {
     cat("Correlação de Pearson entre", input$var_x, "e Life.expectancy:\n\n")
     print(round(correlacao, 3))
   })
-
 }
 
 # =========================

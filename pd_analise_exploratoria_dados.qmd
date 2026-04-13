@@ -6,7 +6,9 @@ editor: visual
 
 # 1. Introdução e Escolha da Base de Dados
 
-A base de dados escolhida para este projeto é o dataset Life Expectancy (WHO) - 2025, obtido no [Kaggle](https://www.kaggle.com/datasets/khunglongg/life-expectancy-who-2025).
+A base de dados utilizada neste trabalho tem origem no dataset Life Expectancy (WHO) - 2025, obtido no [Kaggle](https://www.kaggle.com/datasets/khunglongg/life-expectancy-who-2025), baseado em um relatório publicado pela própria **World Health Organization (WHO)**
+
+![](images/relatorio_who.png)
 
 Motivo da Escolha: Fiz questão de, neste trabalho, buscar uma base de dados real e que nos permitisse insights interessantes e relevantes para a atualidade. Experiências anteriores com bases sintéticas mostraram que nem sempre é possível este tipo de análise quando os dados não são reais. Desta forma, este dataset foi selecionado por apresentar uma estrutura rica para análise, atendendo os requisitos do projeto por possuir mais de 4 variáveis numéricas de interesse e presença de dados faltantes, permitindo a prática de técnicas de imputação.
 
