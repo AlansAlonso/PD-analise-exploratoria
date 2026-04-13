@@ -326,6 +326,8 @@ corrplot(
 )
 ```
 
+Tendo agora limitado a minha análise para estar 5 variáveis, acima podemos ver novamente a matriz de correção e de espalhamento. Nota-se que entre elas todas as correlações estão na faixa de 0.27 a 0.76.
+
 # 7. Análise Bivariada: Testes de Hipóteses
 
 Para validar as observações feitas na EDA, realizaremos três testes de hipóteses conforme as categorias solicitadas.
